@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 
 #include "quicksort.h"
 
@@ -12,7 +13,12 @@ int compareInt(void *n1, void *n2)
   int num1 = *(int*)n1,
     num2 = *(int*)n2;
 
-  return num1 - num2;
+  if (num1 < num2)
+    return -1;
+  else if(num1 == num2)
+    return 0;
+  else
+    return 1;
 }
 
 const size_t intSize()
@@ -30,8 +36,13 @@ int compareDouble(void *n1, void *n2)
 {
   double num1 = *(double*)n1,
     num2 = *(double*)n2;
-
-  return num1 - num2;
+  
+  if (fabs(num1 - num2) < 0.000000001)
+    return 0;
+  else if(num1 < num2)
+    return -1;
+  else
+    return 1;
 }
 
 const size_t doubleSize()
