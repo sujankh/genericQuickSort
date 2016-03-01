@@ -16,6 +16,8 @@ void swap(void *n1, void *n2, size_t typeSize)
     
   memcpy(n1, n2, typeSize);   //*n1 = *n2;
   memcpy(n2, tmp, typeSize); //*n2 = tmp;
+
+  free(tmp);
 }
 
 //equivalent to &a[index]
@@ -69,6 +71,8 @@ int partition(void *a, int lo, int hi)
   alo = getPointerAt(a, lo, typeSize); //a[lo]
   ai = getPointerAt(a, i, typeSize); //a[i]
   swap(alo, ai, typeSize);           //swap(a[lo], a[i]);
+
+  free(pivot);
   
   return i; //i is the position of the partition
 }
